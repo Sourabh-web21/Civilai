@@ -1,0 +1,7 @@
+# Optional desktop/offline AI runtime dependencies.
+# Keep separate from the current web backend requirements until packaging is
+# stabilized on all platforms.
+llama-cpp-python>=0.3.16
+faster-whisper>=1.2.0
+soundcard>=0.4.4
+pywhispercpp>=1.5.0

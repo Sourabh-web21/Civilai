@@ -1,0 +1,59 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+env/
+*.venv
+*.env
+
+# Django settings and secrets
+.env
+*.sqlite3
+db.sqlite3
+*.log
+
+# Pytest and testing
+.coverage
+nosetests.xml
+pytest_cache/
+junit.xml
+
+# Django migrations (if you want to keep it untracked)
+# */migrations/*.py
+*/migrations/*.pyc
+
+# Static files & Media uploads
+staticfiles/
+media/
+*.tar.gz
+*.zip
+
+# VSCode settings
+.vscode/
+
+# JetBrains IDE settings
+.idea/
+
+# MacOS & Linux
+.DS_Store
+*.swp
+*.swo
+
+# Windows
+Thumbs.db
+
+# Docker & Node
+docker-compose.override.yml
+node_modules/
+dist/
+build/
+desktop/src-tauri/target/
+frontend/dist/
+.env
+construction_ai/settings.py
+
+rag_docs
+media/
