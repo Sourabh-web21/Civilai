@@ -8,10 +8,11 @@ case "$ARCH" in
   aarch64|arm64) TARGET_TRIPLE="aarch64-unknown-linux-gnu" ;;
   *) echo "Unsupported Linux architecture: $ARCH" >&2; exit 1 ;;
 esac
-python3 -m venv venv
+python -m venv venv
 source venv/bin/activate
 python -m pip install --upgrade pip
-python -m pip install -r requirements.txt -r requirements-local-ai.txt pyinstaller
+grep -vE '^(nvidia-|triton==)' requirements.txt > /tmp/civilai-requirements-linux.txt
+python -m pip install -r /tmp/civilai-requirements-linux.txt -r requirements-local-ai.txt pyinstaller
 python -m PyInstaller packaging/pyinstaller/civilai-backend.spec --noconfirm
 mkdir -p dist/sidecars
 cp dist/civilai-backend "dist/sidecars/civilai-backend-${TARGET_TRIPLE}"

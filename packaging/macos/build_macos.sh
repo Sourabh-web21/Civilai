@@ -16,12 +16,13 @@ else
   TARGET_TRIPLE="x86_64-apple-darwin"
 fi
 
-python3 -m venv venv
+python -m venv venv
 source venv/bin/activate
 python -m pip install --upgrade pip
 
 export CMAKE_ARGS="${CMAKE_ARGS:--DGGML_METAL=on}"
-python -m pip install -r requirements.txt -r requirements-local-ai.txt pyinstaller
+grep -vE '^(nvidia-|triton==)' requirements.txt > /tmp/civilai-requirements-macos.txt
+python -m pip install -r /tmp/civilai-requirements-macos.txt -r requirements-local-ai.txt pyinstaller
 python -m PyInstaller packaging/pyinstaller/civilai-backend.spec --noconfirm
 
 mkdir -p dist/sidecars
