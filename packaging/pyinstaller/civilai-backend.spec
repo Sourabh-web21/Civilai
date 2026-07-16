@@ -16,14 +16,13 @@ def safe_collect(package):
 
 llama_binaries = collect_dynamic_libs('llama_cpp')
 llama_datas = collect_data_files('llama_cpp')
+rag_datas = [(str(ROOT / 'rag_docs'), 'rag_docs')] if (ROOT / 'rag_docs').exists() else []
 
 a = Analysis(
     [str(ROOT / 'desktop_runtime' / 'backend_launcher.py')],
     pathex=[str(ROOT)],
     binaries=llama_binaries,
-    datas=[
-        (str(ROOT / 'rag_docs'), 'rag_docs'),
-    ] + llama_datas,
+    datas=rag_datas + llama_datas,
     hiddenimports=[
         'construction_ai.settings',
         'construction_ai.urls',
